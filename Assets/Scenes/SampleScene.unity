@@ -309,6 +309,7 @@ GameObject:
   - component: {fileID: 437698020}
   - component: {fileID: 437698019}
   - component: {fileID: 437698018}
+  - component: {fileID: 437698021}
   m_Layer: 0
   m_Name: enemy
   m_TagString: Untagged
@@ -412,12 +413,26 @@ Transform:
   m_GameObject: {fileID: 437698017}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.6467948, y: -1.0454531, z: 0}
+  m_LocalPosition: {x: 15.4, y: -5.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &437698021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437698017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0389004ab7f7a584ea156ee77bc41057, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 859433798}
+  enemy: {fileID: 437698017}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,7 +540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 859433798}
   smoothSpeed: 2.5
-  offset: {x: 0, y: 0, z: -10}
+  offset: {x: 6, y: 0, z: -10}
   distance: 5
 --- !u!1 &859433798
 GameObject:
@@ -691,6 +706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 859433798}
   jumpForce: 5
+  velocity: 0
 --- !u!114 &859433804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -704,7 +720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 859433798}
-  jumpForce: 5
+  jumpForce: 8
 --- !u!1 &1273382006
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ public class PlayerSpeedController : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     [SerializeField] private float jumpForce = 5.0f;
+    [SerializeField] private float velocity;
 
     Rigidbody2D rb;
     private bool shouldSlide = false;
@@ -16,13 +17,11 @@ public class PlayerSpeedController : MonoBehaviour
         InputManager.Instance.OnRightClickPressed += SlideInput;
     }
 
-    //void Update()
-    //{
-    //    if (Input.GetMouseButtonDown(1))
-    //    {
-    //        //shouldSlide = true;
-    //    }
-    //}
+    void Update()
+    {
+        Debug.Log(rb.velocity.magnitude);
+        //rb.sharedMaterial.friction
+    }
 
     private void FixedUpdate()
     {

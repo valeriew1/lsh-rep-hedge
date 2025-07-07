@@ -29,7 +29,7 @@ public class PlayerJumpSC : MonoBehaviour
     {
         if (shouldJump)
         {
-            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            rb.AddForce(transform.right * jumpForce, ForceMode2D.Impulse);
             shouldJump = false;
         }
     }

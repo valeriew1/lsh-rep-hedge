@@ -11,6 +11,7 @@ public class CameraFollowPlayer : MonoBehaviour
     //public Transform player;
     public float smoothSpeed = 0.125f;
     public Vector3 offset;
+    
     //[SerializeField] private Vector3 offset; // Typically (0, 0, -10) for 2D
 
     public float distance = 5.0f;
