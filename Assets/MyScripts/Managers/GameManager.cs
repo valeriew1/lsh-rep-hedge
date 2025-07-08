@@ -1,3 +1,5 @@
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +13,19 @@ public class GameManager : Singleton<GameManager>
         Paused,
         GameOver
     }
-    
+
+
+    private int foodcounter = 0;
+    [SerializeField] private TMP_Text textField;
+
+
+    public void IncreaseScore() 
+    {
+        foodcounter++;
+        textField.text = Convert.ToString(foodcounter); 
+    }
+
+
     private GameState currentState = GameState.MainMenu;
     
     // События для подписки других скриптов

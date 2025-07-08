@@ -25,12 +25,18 @@ public class EnemyCrashTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject == player) 
+        { 
+            player.transform.position = worldPosSTART; 
+            rbPLayer.velocity = Vector2.zero;
+        }
         //collision = enemy.GetComponent<Collider2D>();
-        collision = player.GetComponent<Collider2D>();
+        //collision = player.GetComponent<Collider2D>();
 
         //if (collision.CompareTag("Player"))
         //{
-        player.transform.position = worldPosSTART;
+        //player.transform.position = worldPosSTART;
+        
         //}
 
     }
