@@ -15,12 +15,18 @@ namespace Assets.MyScripts.PlayerController
         {
             base.Start();
             rb = player.GetComponent<Rigidbody2D>();
-            //InputManager.Instance.OnRightClickPressed += SlideInput;
-        }
+            InputManager.Instance.OnRightClickPressed += SlideON;
+            InputManager.Instance.OnRightClickReleased += SlideOff;
 
-        private void SlideInput()
+        }
+        private void SlideON()
         {
             shouldMoreSlide = true;
+        }
+        private void SlideOff()
+        {
+            shouldMoreSlide = false;
+            StateMachine.ChangeState<PlayerSpeedControllerORDSTATE>();
         }
 
         public override void Enter(){}
@@ -33,9 +39,9 @@ namespace Assets.MyScripts.PlayerController
         {
             if (shouldMoreSlide)
             {
-                rb.AddForce(new Vector2(impForce, 0), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(impForce, 0), ForceMode2D.Force);
                 //shouldMoreSlide = false;
-                StateMachine.ChangeState<PlayerSpeedControllerORDSTATE>();
+                
             }
         }
     }

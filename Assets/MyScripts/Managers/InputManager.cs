@@ -13,6 +13,7 @@ public class InputManager : Singleton<InputManager>
     public event Action OnLeftClickPressed;
     public event Action OnLeftClickReleased;
     public event Action OnRightClickPressed;
+    public event Action OnRightClickReleased;
     
     // Настройки чувствительности
     [Header("Настройки ввода")]
@@ -147,6 +148,10 @@ public class InputManager : Singleton<InputManager>
         if (Input.GetMouseButtonDown(1))
         {
             OnRightClickPressed?.Invoke();
+        }
+        if (Input.GetMouseButtonUp(1))
+        {
+            OnRightClickReleased?.Invoke();
         }
     }
 }

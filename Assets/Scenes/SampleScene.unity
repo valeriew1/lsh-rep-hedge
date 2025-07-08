@@ -1474,7 +1474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 859433798}
-  jumpForce: 10
+  jumpForce: 15
 --- !u!114 &859433806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1488,7 +1488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 859433798}
-  curentSpeed: 4
+  currentSpeed: 3
 --- !u!114 &859433807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1502,7 +1502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 859433798}
-  impForce: 5
+  impForce: 20
 --- !u!1 &991172857
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,7 +1670,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -13.1306, y: -19.5514}
+  m_AnchoredPosition: {x: -13.130615, y: -19.551392}
   m_SizeDelta: {x: 26.2604, y: 39.1021}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &995148741
@@ -1935,11 +1935,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b38d41f6e03a9d4fbb5d098638fec52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StateMachine: {fileID: 0}
-  player: {fileID: 1273382006}
-  jumpForce: 5
-  rb: {fileID: 0}
-  shouldJump: 0
 --- !u!58 &1273382008
 CircleCollider2D:
   m_ObjectHideFlags: 0

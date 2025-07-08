@@ -59,6 +59,7 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
         //if (InputManager.Instance.OnRightClickPressed)
         {
             StateMachine.ChangeState<PlayerJumpState>();
+            return;
         }
 
         if (Input.GetMouseButtonDown(1))
