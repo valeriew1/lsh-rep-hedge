@@ -27,9 +27,14 @@ public class GameManager : Singleton<GameManager>
     public void IncreaseScore() 
     {
         maxfoodcounter++;
-        CurrentFoodNum++;
+        //while (CurrentFoodNum < MaxFoodNum) { CurrentFoodNum++; Debug.Log(CurrentFoodNum); }
+        
+        //CurrentFoodNum++;
+
         textField.text = Convert.ToString(maxfoodcounter); 
     }
+
+    public void IncreaseBar() { CurrentFoodNum++; Debug.Log(CurrentFoodNum); }
 
     //public void SLideBar(int _CurrentFoodNum) 
     public void SLideBar() 
@@ -42,6 +47,9 @@ public class GameManager : Singleton<GameManager>
 
 
     }
+
+
+    //PlayerJumpState.Instance.TRY();
 
     public void SlideBarDown() 
     {

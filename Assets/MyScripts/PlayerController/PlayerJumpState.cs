@@ -9,6 +9,10 @@ public class PlayerJumpState : PlayerStateBase
     Rigidbody2D rb;
     private bool shouldJump = false;
 
+
+    //public void TRY() { }
+
+
     protected override void Start()
     {
         base.Start();

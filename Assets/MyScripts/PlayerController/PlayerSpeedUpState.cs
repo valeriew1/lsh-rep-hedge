@@ -62,14 +62,16 @@ namespace Assets.MyScripts.PlayerController
         public override void Enter(){}
 
         public override void Execute()
-        { 
-            Debug.Log(rb.velocity.magnitude);
+        {
+            //Debug.Log(rb.velocity.magnitude);
             //if (slider)
             //    {
             //        slider.value = (float)CurrentFoodNum / MaxFoodNum;
             //    }
 
 
+            
+            //GameManager.Instance.SlideBarDown();
             ////для уменьшения прогресс бара
             //if (shouldMoreSlide)
             //{

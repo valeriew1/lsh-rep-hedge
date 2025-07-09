@@ -8,11 +8,20 @@ using UnityEngine.UI;
 public class FoodCollectTrigger : MonoBehaviour
 {
 
+    //private int MaxFoodNum;
+    //private int CurrentFoodNum = 0;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Destroy(gameObject);
 
+
         GameManager.Instance.IncreaseScore();
+        GameManager.Instance.IncreaseBar();
+
+        //while (CurrentFoodNum < MaxFoodNum)
+        //{
+        //    GameManager.Instance.IncreaseBar();
+        //}
 
     }
 

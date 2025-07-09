@@ -182,8 +182,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textField: {fileID: 995148741}
-  slider: {fileID: 0}
-  MaxFoodNum: 0
+  slider: {fileID: 407888490}
+  MaxFoodNum: 6
 --- !u!1 &74123071
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,7 +577,7 @@ Transform:
   m_GameObject: {fileID: 371511512}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26.44, y: -6.48, z: 0.012365884}
+  m_LocalPosition: {x: 28.6, y: -6.74, z: 0.012365884}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -934,7 +934,7 @@ Transform:
   m_GameObject: {fileID: 455737286}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.72, y: -5.46, z: 0.012365884}
+  m_LocalPosition: {x: 76.6, y: -11.4, z: 0.012365884}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1501,7 +1501,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 4
   m_Material: {fileID: 6200000, guid: 7e693cd085712704eb19c42fbe871961, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1787,7 +1787,7 @@ Transform:
   m_GameObject: {fileID: 991172857}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.99, y: -5.54, z: 0.012365884}
+  m_LocalPosition: {x: 62.5, y: -10.1, z: 0.012365884}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
