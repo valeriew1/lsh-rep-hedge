@@ -8,14 +8,22 @@ using UnityEngine.UI;
 public class FoodCollectTrigger : MonoBehaviour
 {
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Destroy(gameObject);
+
+        GameManager.Instance.IncreaseScore();
+
+    }
+
     //[SerializeField] private GameObject foodOBJ;
     //[SerializeField] private GameObject player;
-    
+
 
     //Rigidbody2D rbFood;
     //Rigidbody2D rbPlayer;
 
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,23 +39,7 @@ public class FoodCollectTrigger : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        //collision = player.GetComponent<Collider2D>();
 
-        Destroy(gameObject);
-
-        GameManager.Instance.IncreaseScore();
-
-        //foodcounter++;
-
-
-        //textField.text = Convert.ToString(foodcounter);
-
-
-        //if () { }
-
-    }
 
 
 }

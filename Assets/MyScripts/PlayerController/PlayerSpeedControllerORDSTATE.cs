@@ -1,4 +1,5 @@
 using Assets.MyScripts.PlayerController;
+using Unity.VisualScripting;
 using UnityEngine;
 
 //public class PlayerSpeedController : MonoBehaviour, IState
@@ -7,8 +8,13 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
 {
     [SerializeField] private GameObject player;
     [SerializeField] private float currentSpeed = 3f;
+    [SerializeField] private GameObject ground;
+    Rigidbody2D rbGROUND;
     Rigidbody2D rb;
+    //private bool IsJumping = false;
+
     private bool ordslide = true;
+    private bool onEarth = false;
 
     //private bool shouldMoreSlide = false;
 
@@ -22,8 +28,12 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
     {
         base.Start();
         rb = player.GetComponent<Rigidbody2D>();
+        rbGROUND = ground.GetComponent<Rigidbody2D>();
+
         //StateMachine = GetComponent<StateMachine>();
         //InputManager.Instance.OnRightClickPressed += SlideInput;
+        //InputManager.Instance.OnLeftClickReleased += JumpOff;
+        //InputManager.Instance.OnLeftClickPressed += JumpON;
     }
 
     void Update()
@@ -55,25 +65,80 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
     public override void Execute()
     {
         Debug.Log(rb.velocity.magnitude);
-        if (Input.GetMouseButtonDown(0))
-        //if (InputManager.Instance.OnRightClickPressed)
-        {
-            StateMachine.ChangeState<PlayerJumpState>();
-            return;
-        }
+        GameManager.Instance.SLideBar();
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0))
+        {
+            //прыжок, не трожь
+            if (onEarth)
+            {
+                StateMachine.ChangeState<PlayerJumpState>();
+                //onEarth = falseж //работат для двойного прыжка
+                ordslide = false;
+                return;
+            }
+        }
+        //ускорение, не трожь!
+        else if (Input.GetMouseButtonDown(1))
         {
             StateMachine.ChangeState<PlayerSpeedUpState>();
+            ordslide = false;
+            //для уменьшения прогресс бара
+            //if (shouldMoreSlide)
+            //{
+                GameManager.Instance.SlideBarDown();
+            //}
+
         }
+        else { ordslide = true; }
+
+        //{ IsJumping = true; }
+
+        //if (InputManager.Instance.OnRightClickPressed)
+        //{
+        //if (IsJumping)
+        //{
+        //StateMachine.ChangeState<PlayerJumpState>();
+        ////onEarth = false;
+        //return;
+        //}
+        //onEarth = false;
+        //}
+
+
+
     }
+
+    private void OnCollisionStay2D(Collision2D other)
+    {
+
+        if (ground = other.gameObject)
+        { onEarth = true; } 
+
+
+        //// Now you can get components from the collided object
+        //Rigidbody2D rb = ground.GetComponent<Rigidbody2D>();
+
+        //if (other == ground.GetComponent<Collision2D>())
+        
+    }
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (ground = other.gameObject)
+        { onEarth = false; }
+
+    } //регулирует второй прыжок - при этом войде прыжок только один
+
+
 
     public override void Exit() { }
 
     public override void ProcessFixedUpdate()
     {
-        //if (ordslide)
-        //{
-        rb.velocity = rb.velocity.normalized * currentSpeed;
+        if (ordslide)
+        {
+            rb.velocity = rb.velocity.normalized * currentSpeed;
+
+        }
     }
 }

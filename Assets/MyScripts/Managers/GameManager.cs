@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -14,15 +15,44 @@ public class GameManager : Singleton<GameManager>
         GameOver
     }
 
-
-    private int foodcounter = 0;
+        
     [SerializeField] private TMP_Text textField;
+    private int maxfoodcounter = 0;
+
+    [SerializeField] private Slider slider;
+    [SerializeField] private int MaxFoodNum;
+    private int CurrentFoodNum = 0;
 
 
     public void IncreaseScore() 
     {
-        foodcounter++;
-        textField.text = Convert.ToString(foodcounter); 
+        maxfoodcounter++;
+        CurrentFoodNum++;
+        textField.text = Convert.ToString(maxfoodcounter); 
+    }
+
+    //public void SLideBar(int _CurrentFoodNum) 
+    public void SLideBar() 
+    {
+        //CurrentFoodNum = _CurrentFoodNum;
+        if (slider)
+        {
+            slider.value = (float)CurrentFoodNum / MaxFoodNum;
+        }
+
+
+    }
+
+    public void SlideBarDown() 
+    {
+        while (slider.value > 0) 
+        { 
+            
+            CurrentFoodNum = Convert.ToInt32((CurrentFoodNum - 1)*Time.deltaTime); 
+        }
+
+
+        //CurrentFoodNum--;
     }
 
 

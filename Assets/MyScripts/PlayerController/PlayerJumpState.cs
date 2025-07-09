@@ -11,17 +11,24 @@ public class PlayerJumpState : PlayerStateBase
 
     protected override void Start()
     {
-        rb = player.GetComponent<Rigidbody2D>();
-
         base.Start();
+        rb = player.GetComponent<Rigidbody2D>();
+        //InputManager.Instance.OnLeftClickPressed += JumpON;
+        //InputManager.Instance.OnLeftClickReleased += JumpOff;
     }
+    //private void JumpON()
+    //{
+    //    shouldJump = true;
+    //}
+    //private void JumpOff()
+    //{
+    //    shouldJump = false;
+    //    StateMachine.ChangeState<PlayerSpeedControllerORDSTATE>();
+
+    //}
 
     void Update()
     {
-    //    if (Input.GetMouseButtonDown(0))
-    //    {
-    //        shouldJump = true;
-    //    }
     }
 
     private void FixedUpdate()
@@ -38,6 +45,7 @@ public class PlayerJumpState : PlayerStateBase
         shouldJump = true;
     }
 
+
     public override void Execute()
     {
         //if (Input.GetMouseButtonDown(0))
@@ -48,7 +56,7 @@ public class PlayerJumpState : PlayerStateBase
 
     public override void Exit()
     {
-        //shouldJump = false;
+        shouldJump = false;
     }
 
     public override void ProcessFixedUpdate()
