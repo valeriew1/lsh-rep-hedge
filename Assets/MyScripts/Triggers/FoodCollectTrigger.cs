@@ -1,3 +1,5 @@
+using Assets.MyScripts.Managers;
+using Assets.MyScripts.PlayerController;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,11 +10,29 @@ using UnityEngine.UI;
 public class FoodCollectTrigger : MonoBehaviour
 {
 
+    //private int MaxFoodNum;
+    //private int CurrentFoodNum = 0;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Destroy(gameObject);
+        var stateMachine = collision.gameObject.GetComponent<StateMachine>();
+        
+        if (stateMachine.GetCurrentState() is not PlayerSpeedUpState)
+        {
+            //GameManager.Instance.IncreaseBar();
+            //LevelManager.Instance.IncreaseBar();
+        }
 
-        GameManager.Instance.IncreaseScore();
+
+        //GameManager.Instance.IncreaseScore();
+        //if (StateMachine.ge.GetCurrentState = PlayerSpeedControllerORDSTATE)
+        //if (StateMachine.Instance.GetCurrentState() == StateMachine.Instance.PlayerSpeedUpState);
+        //GameManager.Instance.IncreaseBar();
+
+        //while (CurrentFoodNum < MaxFoodNum)
+        //{
+        //    GameManager.Instance.IncreaseBar();
+        //}
 
     }
 

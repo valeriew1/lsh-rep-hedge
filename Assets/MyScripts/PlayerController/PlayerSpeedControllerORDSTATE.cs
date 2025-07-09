@@ -1,6 +1,7 @@
 using Assets.MyScripts.PlayerController;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 //public class PlayerSpeedController : MonoBehaviour, IState
 
@@ -16,6 +17,10 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
     private bool ordslide = true;
     private bool onEarth = false;
 
+
+
+    //[SerializeField] private Slider slider;
+
     //private bool shouldMoreSlide = false;
 
     //[SerializeField] private float impForce = 5.0f;
@@ -26,6 +31,8 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
 
     protected override void Start()
     {
+
+        //slider.value = 0;
         base.Start();
         rb = player.GetComponent<Rigidbody2D>();
         rbGROUND = ground.GetComponent<Rigidbody2D>();
@@ -64,8 +71,8 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
 
     public override void Execute()
     {
-        Debug.Log(rb.velocity.magnitude);
-        GameManager.Instance.SLideBar();
+        //Debug.Log(rb.velocity.magnitude);
+        //GameManager.Instance.SLideBar();
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -86,11 +93,11 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
             //для уменьшения прогресс бара
             //if (shouldMoreSlide)
             //{
-                GameManager.Instance.SlideBarDown();
+                //GameManager.Instance.SlideBarDown();
             //}
 
         }
-        else { ordslide = true; }
+        else { ordslide = true; GameManager.Instance.SLideBar(); }
 
         //{ IsJumping = true; }
 
@@ -141,4 +148,7 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
 
         }
     }
+
+
+    
 }
