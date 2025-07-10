@@ -70,14 +70,14 @@ namespace Assets.MyScripts.PlayerController
             //    }
 
 
-            
+
             //GameManager.Instance.SlideBarDown();
             ////для уменьшения прогресс бара
             //if (shouldMoreSlide)
             //{
             //    GameManager.Instance.SlideBarDown();
-            //}
-
+            ////}
+            LevelManager.Instance.SlideBarDown();
             raschet();
         }
 
@@ -91,6 +91,9 @@ namespace Assets.MyScripts.PlayerController
                 {
                     rb.AddForce(new Vector2((float)impForce,0), ForceMode2D.Force);
                 }
+
+
+                //LevelManager.Instance.SlideBarDown();
 
                 //while()
 

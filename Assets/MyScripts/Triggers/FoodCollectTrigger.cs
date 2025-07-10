@@ -14,9 +14,11 @@ public class FoodCollectTrigger : MonoBehaviour
     {
         Destroy(gameObject);
 
+        LevelManager.Instance.IncreaseScore();
+        LevelManager.Instance.IncreaseBar();
 
-        GameManager.Instance.IncreaseScore();
-        GameManager.Instance.IncreaseBar();
+        //GameManager.Instance.IncreaseScore();
+        //GameManager.Instance.IncreaseBar();
 
         //while (CurrentFoodNum < MaxFoodNum)
         //{

@@ -88,16 +88,26 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
         //ускорение, не трожь!
         else if (Input.GetMouseButtonDown(1))
         {
-            StateMachine.ChangeState<PlayerSpeedUpState>();
+
+            LevelManager.Instance.CanSLideMore();
             ordslide = false;
+
+            //StateMachine.ChangeState<PlayerSpeedUpState>();
+
+
+
             //дл€ уменьшени€ прогресс бара
             //if (shouldMoreSlide)
             //{
-                //GameManager.Instance.SlideBarDown();
+            //GameManager.Instance.SlideBarDown();
             //}
 
         }
-        else { ordslide = true; GameManager.Instance.SLideBar(); }
+        else { 
+            ordslide = true;
+            //GameManager.Instance.SLideBar(); 
+            LevelManager.Instance.SLideBar();
+        }
 
         //{ IsJumping = true; }
 
@@ -115,6 +125,8 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
 
 
     }
+
+    //public void HUETA() { }
 
     private void OnCollisionStay2D(Collision2D other)
     {
@@ -147,6 +159,7 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
             rb.velocity = rb.velocity.normalized * currentSpeed;
 
         }
+        //LevelManager.Instance.SLideBar();
     }
 
 
