@@ -9,20 +9,23 @@ public class CameraFollowPlayer : MonoBehaviour
     Transform target;
 
     //public Transform player;
-    public float smoothSpeed = 0.125f;
-    public Vector3 offset;
+    public float smoothSpeed;
+    Vector3 offset;
     
     //[SerializeField] private Vector3 offset; // Typically (0, 0, -10) for 2D
 
     public float distance = 5.0f;
+    Vector3 eu90;
 
 
     private Vector3 _originalPosition;
 
     private void Start()
     {
+        offset = new Vector3(0, 110, 10);
         _originalPosition = transform.position;
         target = player.transform;
+        eu90 = new Vector3 (128,0,0);
         //offset.z = -10f;
     }
 
@@ -31,11 +34,15 @@ public class CameraFollowPlayer : MonoBehaviour
         //offset.z = -10f;
         Vector3 desiredPosition = target.position + offset;
 
+        Vector3 desiredAngle = target.eulerAngles + eu90;
+
         // Smoothly move the camera
         //Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+        Vector3 smoothedAngle = Vector3.Lerp(transform.eulerAngles, desiredAngle, smoothSpeed);
         //smoothedPosition.z = -10f;
         transform.position = smoothedPosition;
+        transform.eulerAngles = smoothedAngle;
 
         //if (player != null)
         //{
