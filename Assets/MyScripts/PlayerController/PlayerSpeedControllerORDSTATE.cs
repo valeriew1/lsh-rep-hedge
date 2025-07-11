@@ -8,7 +8,8 @@ using UnityEngine.UI;
 public class PlayerSpeedControllerORDSTATE : PlayerStateBase
 {
     [SerializeField] private GameObject player;
-    [SerializeField] private float currentSpeed = 3f;
+    [SerializeField] private float ORDSpeed;
+    private float currentSpeed;
     [SerializeField] private GameObject ground;
     Rigidbody2D rbGROUND;
     Rigidbody2D rb;
@@ -17,6 +18,12 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
     private bool ordslide = true;
     private bool onEarth = false;
 
+    private float SCRwidth;
+    private float SCRleft;
+    private float SCRright;
+    private float curentMousePos;
+
+    //private float SCRuntouched;
 
 
     //[SerializeField] private Slider slider;
@@ -37,15 +44,26 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
         rb = player.GetComponent<Rigidbody2D>();
         rbGROUND = ground.GetComponent<Rigidbody2D>();
 
+        ScreenPieaces();
+
         //StateMachine = GetComponent<StateMachine>();
         //InputManager.Instance.OnRightClickPressed += SlideInput;
         //InputManager.Instance.OnLeftClickReleased += JumpOff;
         //InputManager.Instance.OnLeftClickPressed += JumpON;
     }
+    private void ScreenPieaces() 
+    {
+        SCRwidth = Screen.width;
+        SCRleft = SCRwidth / 3;
+        SCRright = (SCRwidth / 3)*2;
+        //SCRuntouched = SCRwidth / 3;
+
+    }
 
     void Update()
     {
         //Debug.Log(rb.velocity.magnitude);
+        //Debug.Log(SCRwidth);
         //rb.sharedMaterial.friction
     }
 
@@ -73,6 +91,8 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
     {
         //Debug.Log(rb.velocity.magnitude);
         //GameManager.Instance.SLideBar();
+
+        curentMousePos = Input.mousePosition.x;
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -107,6 +127,13 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
             ordslide = true;
             //GameManager.Instance.SLideBar(); 
             LevelManager.Instance.SLideBar();
+            Debug.Log(currentSpeed);
+            if (curentMousePos < SCRleft) { currentSpeed = ORDSpeed - 3; }
+            else if (curentMousePos > SCRright) { currentSpeed = ORDSpeed + 3; }
+            else { currentSpeed = ORDSpeed; }
+            //if (curentMousePos < SCRleft) { currentSpeed -= 1; }
+            //else if (curentMousePos > SCRright) { currentSpeed += 1; }
+            //else { currentSpeed = ORDSpeed; }
         }
 
         //{ IsJumping = true; }
@@ -157,6 +184,8 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
         if (ordslide)
         {
             rb.velocity = rb.velocity.normalized * currentSpeed;
+            //Input.mousePosition;
+            //Screen.width;
 
         }
         //LevelManager.Instance.SLideBar();

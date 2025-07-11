@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerJumpState : PlayerStateBase
 {
     [SerializeField] private GameObject player;
-    [SerializeField] private float jumpForce = 15.0f;
+    [SerializeField] private float jumpForce;
     Rigidbody2D rb;
     private bool shouldJump = false;
 
@@ -68,6 +68,9 @@ public class PlayerJumpState : PlayerStateBase
         if (shouldJump)
         {
             rb.AddForce(transform.right * jumpForce, ForceMode2D.Impulse);
+
+
+            //rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
             //rb.AddForce(new Vector2(1, jumpForce), ForceMode2D.Impulse);
             StateMachine.ChangeState<PlayerSpeedControllerORDSTATE>();
         }

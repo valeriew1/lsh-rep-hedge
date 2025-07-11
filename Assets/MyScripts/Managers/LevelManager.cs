@@ -23,6 +23,22 @@ public class LevelManager : MonoBehaviour
 
 
 
+    //размеры экрана
+    //private float SCRwidth;
+
+    //private float SCRleft;
+    //private float SCRright;
+
+    //public void ScreenPieaces()
+    //{
+    //    SCRwidth = Screen.width;
+    //    SCRleft = SCRwidth / 3;
+    //    SCRright = (SCRwidth / 3) * 2;
+    //    //SCRuntouched = SCRwidth / 3;
+
+    //}
+
+
 
     //еда и ускорение:
 
@@ -92,7 +108,7 @@ public class LevelManager : MonoBehaviour
 
         //}
 
-        CurrentFoodNum -= Time.deltaTime;
+        CurrentFoodNum -= 5*Time.deltaTime;
         //CurrentFoodNum = (CurrentFoodNum - 1f) * Time.deltaTime;
         SLideBar();
         if (CurrentFoodNum == 0) 
