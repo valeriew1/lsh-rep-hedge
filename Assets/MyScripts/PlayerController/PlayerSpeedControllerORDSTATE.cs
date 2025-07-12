@@ -99,10 +99,24 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
             //прыжок, не трожь
             if (onEarth)
             {
+
+
+
+                //if (curentMousePos < SCRleft) { currentSpeed = ORDSpeed - 3; }
+                //else if (curentMousePos > SCRright) { currentSpeed = ORDSpeed + 3; }
+                //else { currentSpeed = ORDSpeed; }
+
+
+                //rb.velocity = new Vector2(0, player.transform.position.y);
                 StateMachine.ChangeState<PlayerJumpState>();
                 //onEarth = falseж //работат для двойного прыжка
                 ordslide = false;
                 return;
+
+
+
+
+
             }
         }
         //ускорение, не трожь!
@@ -127,10 +141,17 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
             ordslide = true;
             //GameManager.Instance.SLideBar(); 
             LevelManager.Instance.SLideBar();
+
             Debug.Log(currentSpeed);
-            if (curentMousePos < SCRleft) { currentSpeed = ORDSpeed - 3; }
-            else if (curentMousePos > SCRright) { currentSpeed = ORDSpeed + 3; }
-            else { currentSpeed = ORDSpeed; }
+
+            if (onEarth)
+            {
+                if (curentMousePos < SCRleft) { currentSpeed = ORDSpeed - 3; }
+                else if (curentMousePos > SCRright) { currentSpeed = ORDSpeed + 3; }
+                else { currentSpeed = ORDSpeed; }
+            }
+
+
             //if (curentMousePos < SCRleft) { currentSpeed -= 1; }
             //else if (curentMousePos > SCRright) { currentSpeed += 1; }
             //else { currentSpeed = ORDSpeed; }
@@ -188,6 +209,7 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
             //Screen.width;
 
         }
+        if (ordslide == false) { rb.velocity = new Vector2(0, 0); }
         //LevelManager.Instance.SLideBar();
     }
 

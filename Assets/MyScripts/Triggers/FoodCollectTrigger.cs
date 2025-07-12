@@ -7,16 +7,20 @@ using UnityEngine.UI;
 
 public class FoodCollectTrigger : MonoBehaviour
 {
+    [SerializeField] private GameObject player;
 
     //private int MaxFoodNum;
     //private int CurrentFoodNum = 0;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
 
-        LevelManager.Instance.IncreaseScore();
-        LevelManager.Instance.IncreaseBar();
+        if (collision.gameObject == player)
+        {
+            Destroy(gameObject);
 
+            LevelManager.Instance.IncreaseScore();
+            LevelManager.Instance.IncreaseBar();
+        }
         //GameManager.Instance.IncreaseScore();
         //GameManager.Instance.IncreaseBar();
 
