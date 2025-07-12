@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class PlayerSpeedControllerORDSTATE : PlayerStateBase
 {
+    //GameManager gameManager;
+
+
     [SerializeField] private GameObject player;
     [SerializeField] private float ORDSpeed;
     private float currentSpeed;
@@ -45,6 +48,9 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
         rbGROUND = ground.GetComponent<Rigidbody2D>();
 
         ScreenPieaces();
+
+        GameManager.Instance.StartGame();
+        //gameManager.CurrentState = GameManager.GameState.Playing;
 
         //StateMachine = GetComponent<StateMachine>();
         //InputManager.Instance.OnRightClickPressed += SlideInput;
@@ -94,67 +100,72 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
 
         curentMousePos = Input.mousePosition.x;
 
-        if (Input.GetMouseButtonDown(0))
+        if (GameManager.Instance.CurrentState == GameManager.GameState.Playing)
         {
-            //прыжок, не трожь
-            if (onEarth)
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                //прыжок, не трожь
+                if (onEarth)
+                {
+
+
+
+                    //if (curentMousePos < SCRleft) { currentSpeed = ORDSpeed - 3; }
+                    //else if (curentMousePos > SCRright) { currentSpeed = ORDSpeed + 3; }
+                    //else { currentSpeed = ORDSpeed; }
+
+
+                    //rb.velocity = new Vector2(0, player.transform.position.y);
+                    StateMachine.ChangeState<PlayerJumpState>();
+                    //onEarth = falseж //работат для двойного прыжка
+                    ordslide = false;
+                    return;
+
+
+
+
+
+                }
+            }
+            //ускорение, не трожь!
+            else if (Input.GetMouseButtonDown(1))
             {
 
-
-
-                //if (curentMousePos < SCRleft) { currentSpeed = ORDSpeed - 3; }
-                //else if (curentMousePos > SCRright) { currentSpeed = ORDSpeed + 3; }
-                //else { currentSpeed = ORDSpeed; }
-
-
-                //rb.velocity = new Vector2(0, player.transform.position.y);
-                StateMachine.ChangeState<PlayerJumpState>();
-                //onEarth = falseж //работат для двойного прыжка
+                LevelManager.Instance.CanSLideMore();
                 ordslide = false;
-                return;
+
+                //StateMachine.ChangeState<PlayerSpeedUpState>();
 
 
 
-
+                //для уменьшения прогресс бара
+                //if (shouldMoreSlide)
+                //{
+                //GameManager.Instance.SlideBarDown();
+                //}
 
             }
-        }
-        //ускорение, не трожь!
-        else if (Input.GetMouseButtonDown(1))
-        {
-
-            LevelManager.Instance.CanSLideMore();
-            ordslide = false;
-
-            //StateMachine.ChangeState<PlayerSpeedUpState>();
-
-
-
-            //для уменьшения прогресс бара
-            //if (shouldMoreSlide)
-            //{
-            //GameManager.Instance.SlideBarDown();
-            //}
-
-        }
-        else { 
-            ordslide = true;
-            //GameManager.Instance.SLideBar(); 
-            LevelManager.Instance.SLideBar();
-
-            Debug.Log(currentSpeed);
-
-            if (onEarth)
+            else
             {
-                if (curentMousePos < SCRleft) { currentSpeed = ORDSpeed - 3; }
-                else if (curentMousePos > SCRright) { currentSpeed = ORDSpeed + 3; }
-                else { currentSpeed = ORDSpeed; }
+                ordslide = true;
+                //GameManager.Instance.SLideBar(); 
+                LevelManager.Instance.SLideBar();
+
+                Debug.Log(currentSpeed);
+
+                if (onEarth)
+                {
+                    if (curentMousePos < SCRleft) { currentSpeed = ORDSpeed - 3; }
+                    else if (curentMousePos > SCRright) { currentSpeed = ORDSpeed + 3; }
+                    else { currentSpeed = ORDSpeed; }
+                }
+
+
+                //if (curentMousePos < SCRleft) { currentSpeed -= 1; }
+                //else if (curentMousePos > SCRright) { currentSpeed += 1; }
+                //else { currentSpeed = ORDSpeed; }
             }
-
-
-            //if (curentMousePos < SCRleft) { currentSpeed -= 1; }
-            //else if (curentMousePos > SCRright) { currentSpeed += 1; }
-            //else { currentSpeed = ORDSpeed; }
         }
 
         //{ IsJumping = true; }

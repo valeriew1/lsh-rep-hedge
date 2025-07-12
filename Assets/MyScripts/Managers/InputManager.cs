@@ -72,10 +72,10 @@ public class InputManager : Singleton<InputManager>
     }
     
     // Проверка удержания клавиш
-    public bool IsJumpHeld()
-    {
-        return Input.GetKey(KeyCode.Space);
-    }
+    //public bool IsJumpHeld()
+    //{
+    //    return Input.GetKey(KeyCode.Space);
+    //}
     
     public bool IsSprintHeld()
     {
@@ -105,15 +105,15 @@ public class InputManager : Singleton<InputManager>
     void HandleActionInput()
     {
         // Прыжок
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            OnJumpPressed?.Invoke();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    OnJumpPressed?.Invoke();
+        //}
         
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            OnJumpReleased?.Invoke();
-        }
+        //if (Input.GetKeyUp(KeyCode.Space))
+        //{
+        //    OnJumpReleased?.Invoke();
+        //}
         
         // Взаимодействие
         if (Input.GetKeyDown(KeyCode.E))
@@ -122,10 +122,15 @@ public class InputManager : Singleton<InputManager>
         }
         
         // Пауза
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             OnPausePressed?.Invoke();
         }
+        //по ескейпу
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    OnPausePressed?.Invoke();
+        //}
     }
     
     void HandleMouseInput()
