@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
-    // Состояния игры
     public enum GameState
     {
         MainMenu,
@@ -15,15 +14,12 @@ public class GameManager : Singleton<GameManager>
         GameOver
     }
 
- 
-
     private GameState currentState = GameState.MainMenu;
     
-    // События для подписки других скриптов
     public delegate void OnStateChanged(GameState newState);
     public event OnStateChanged onStateChanged;
     
-    // Свойство для получения текущего состояния
+    
     public GameState CurrentState 
     { 
         get { return currentState; }
@@ -34,7 +30,6 @@ public class GameManager : Singleton<GameManager>
         base.Awake();
     }
     
-    // Изменение состояния игры
     public void ChangeState(GameState newState)
     {
         if (currentState == newState)
@@ -44,10 +39,8 @@ public class GameManager : Singleton<GameManager>
         
         currentState = newState;
         
-        // Вызываем событие
         onStateChanged?.Invoke(newState);
         
-        // Логика для каждого состояния
         switch (newState)
         {
             case GameState.MainMenu:
@@ -72,7 +65,6 @@ public class GameManager : Singleton<GameManager>
         }
     }
     
-    // Базовые методы управления игрой
     public void StartGame()
     {
         ChangeState(GameState.Playing);

@@ -7,19 +7,11 @@ public class ContinueLevelButtonScript : MonoBehaviour
 {
 
     [SerializeField] Button ContinueLevelButton;
-    //GameManager gameManager;
-
-    // Start is called before the first frame update
     void Start()
     {
         ContinueLevelButton.onClick.AddListener(ContinueLevel);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 
     public void ContinueLevel() 

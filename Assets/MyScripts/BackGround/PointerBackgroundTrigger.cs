@@ -11,25 +11,13 @@ public class PointerBackgroundTrigger : MonoBehaviour
         backgroundCreate = FindObjectOfType<BackGroundCreateScript>();
     }
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             backgroundCreate.CreateBackground(transform.parent);
-            Destroy(gameObject);
+
         }
-    }
-
-    void Start()
-    {
-        
-    }
-
-    
-    void Update()
-    {
-        
     }
 
 }

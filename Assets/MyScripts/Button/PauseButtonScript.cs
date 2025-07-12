@@ -7,30 +7,14 @@ public class PauseButtonScript : MonoBehaviour
 {
 
     [SerializeField] Button PauseButton;
-    //GameManager gameManager;
-
-
-    // Start is called before the first frame update
+    
     void Start()
     {
-        //PauseButton.onClick.AddListener(PauseCanvasAppear);
-        //gameManager.PauseGame();
         InputManager.Instance.OnPausePressed += PauseCanvasAppear;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
     public void PauseCanvasAppear()
     {
-        //gameManager.PauseGame();
-        //GameManager.ChangeState(PauseGame());
-        //GameManager.ChangeState(GameManager.Instance.PauseGame());
-        //GameManager.Instance.PauseGame();
         Canvas[] allCanvases = Resources.FindObjectsOfTypeAll<Canvas>();
         foreach (Canvas canvas in allCanvases)
         {
@@ -47,11 +31,5 @@ public class PauseButtonScript : MonoBehaviour
             }
         }
     }
-
-   
-    //public void OnMouseOver()
-    //{
-           
-    //}
 
 }
