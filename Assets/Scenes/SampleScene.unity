@@ -398,7 +398,7 @@ Transform:
   m_GameObject: {fileID: 74123071}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.13338082, w: 0.99106485}
-  m_LocalPosition: {x: 41.29, y: -18.11, z: 0.012365884}
+  m_LocalPosition: {x: 198.3, y: -67.5, z: 0.012365884}
   m_LocalScale: {x: 34.943867, y: 8.825351, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -519,6 +519,7 @@ GameObject:
   - component: {fileID: 99209854}
   - component: {fileID: 99209853}
   - component: {fileID: 99209852}
+  - component: {fileID: 99209855}
   m_Layer: 5
   m_Name: RestartLevelButton
   m_TagString: Untagged
@@ -628,6 +629,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 99209850}
   m_CullTransparentMesh: 1
+--- !u!114 &99209855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99209850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f32eb55bfdb18a43970c7c9db0e87d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &226351801
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,6 +787,7 @@ GameObject:
   - component: {fileID: 242098365}
   - component: {fileID: 242098364}
   - component: {fileID: 242098363}
+  - component: {fileID: 242098366}
   m_Layer: 5
   m_Name: ContinueLevelButton
   m_TagString: Untagged
@@ -883,6 +897,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 242098361}
   m_CullTransparentMesh: 1
+--- !u!114 &242098366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242098361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b40a58b48ed692f4c991f5af35e692c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ContinueLevelButton: {fileID: 242098363}
 --- !u!1 &250525947
 GameObject:
   m_ObjectHideFlags: 0
@@ -3660,6 +3687,7 @@ GameObject:
   - component: {fileID: 1372545340}
   - component: {fileID: 1372545339}
   - component: {fileID: 1372545342}
+  - component: {fileID: 1372545343}
   m_Layer: 5
   m_Name: Pause-Button
   m_TagString: Untagged
@@ -3804,6 +3832,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1372545343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372545337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eac3fb0b16e1de04f880ca99678244c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PauseButton: {fileID: 1372545339}
 --- !u!1 &1424775930
 GameObject:
   m_ObjectHideFlags: 0
@@ -4607,7 +4648,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1964499420
 Transform:
   m_ObjectHideFlags: 0
