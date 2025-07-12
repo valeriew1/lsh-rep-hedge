@@ -191,7 +191,10 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
     {
 
         if (ground = other.gameObject)
-        { onEarth = true; } 
+        { 
+            lastGroundNormal = other.contacts[0].normal; 
+            onEarth = true; 
+        } 
 
 
         //// Now you can get components from the collided object
@@ -200,6 +203,9 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
         //if (other == ground.GetComponent<Collision2D>())
         
     }
+
+    public static Vector2 lastGroundNormal = Vector2.up;
+
     private void OnCollisionExit2D(Collision2D other)
     {
         if (ground = other.gameObject)
@@ -215,7 +221,9 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
     {
         if (ordslide)
         {
-            rb.velocity = rb.velocity.normalized * currentSpeed;
+            rb.velocity = new Vector2(rb.velocity.normalized.x * currentSpeed, rb.velocity.y);
+
+            //rb.velocity = rb.velocity.normalized * currentSpeed;
             //Input.mousePosition;
             //Screen.width;
 

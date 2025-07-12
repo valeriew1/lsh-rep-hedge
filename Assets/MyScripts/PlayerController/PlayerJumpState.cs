@@ -96,35 +96,58 @@ public class PlayerJumpState : PlayerStateBase
 
     public override void ProcessFixedUpdate()
     {
+        // lastGroundNormal — нормаль к поверхности, полученная в OnCollisionStay2D
 
-        //float maxJumpSpeed = 10f; // Максимальная скорость при прыжке
-        //if (rb.velocity.y > maxJumpSpeed)
-        //{
-        //    rb.velocity = new Vector2(rb.velocity.x, maxJumpSpeed);
-        //}
+        // 1. Разложим скорость на компоненты
+        Vector2 velocity = rb.velocity;
+        Vector2 normal = PlayerSpeedControllerORDSTATE.lastGroundNormal.normalized;
+        Vector2 tangent = new Vector2(-normal.y, normal.x);
 
+        // 2. Сохраним тангенциальную составляющую
+        float tangentSpeed = Vector2.Dot(velocity, tangent);
 
-        //if (shouldJump)
-        //{
+        // 3. Зададим нормальную составляющую для нужной высоты прыжка
+        float g = Mathf.Abs(Physics2D.gravity.y * rb.gravityScale);
+        float desiredHeight = 3f;
+        float v_jump = Mathf.Sqrt(2 * g * desiredHeight);
 
-        //if () 
-        //{ } 
-        //else if () { } 
-        //else { }
+        // 4. Итоговая скорость — сумма тангенциальной и нормальной
+        Vector2 newVelocity = tangent * tangentSpeed + normal * v_jump;
+        rb.velocity = newVelocity;
 
-        //rb.velocity = rb.velocity.normalized * currentSpeed;
-        //rb.velocity = new Vector2(0,0);
-
-        //jumpDirection = new Vector2(rb.velocity.normalized.x, 1f).normalized;
-        //rb.AddForce(jumpDirection * jumpForce, ForceMode2D.Impulse);
-        //rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        rb.AddForce(transform.right * jumpForce, ForceMode2D.Impulse);
-
-
-        //rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-        //rb.AddForce(new Vector2(0, ORDjumpForce), ForceMode2D.Impulse);
-        //rb.AddForce(new Vector2(1, jumpForce), ForceMode2D.Impulse);
         StateMachine.ChangeState<PlayerSpeedControllerORDSTATE>();
-        //}
+
+
+
+
+        ////float maxJumpSpeed = 10f; // Максимальная скорость при прыжке
+        ////if (rb.velocity.y > maxJumpSpeed)
+        ////{
+        ////    rb.velocity = new Vector2(rb.velocity.x, maxJumpSpeed);
+        ////}
+
+
+        ////if (shouldJump)
+        ////{
+
+        ////if () 
+        ////{ } 
+        ////else if () { } 
+        ////else { }
+
+        ////rb.velocity = rb.velocity.normalized * currentSpeed;
+        ////rb.velocity = new Vector2(0,0);
+
+        ////jumpDirection = new Vector2(rb.velocity.normalized.x, 1f).normalized;
+        ////rb.AddForce(jumpDirection * jumpForce, ForceMode2D.Impulse);
+        ////rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        //rb.AddForce(transform.right * jumpForce, ForceMode2D.Impulse);
+
+
+        ////rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        ////rb.AddForce(new Vector2(0, ORDjumpForce), ForceMode2D.Impulse);
+        ////rb.AddForce(new Vector2(1, jumpForce), ForceMode2D.Impulse);
+        //StateMachine.ChangeState<PlayerSpeedControllerORDSTATE>();
+        ////}
     }
 }
