@@ -6,14 +6,8 @@ public class PlayerJumpState : PlayerStateBase
 {
     [SerializeField] private GameObject player;
     [SerializeField] private float ORDjumpForce;
-    //[SerializeField] private float ORDSpeed;
-    //private float currentSpeed;
     private float jumpForce = 20f;
     Rigidbody2D rb;
-    //private bool shouldJump = false;
-
-
-    //public void TRY() { }
 
     Vector2 jumpDirection;
 
@@ -31,8 +25,6 @@ public class PlayerJumpState : PlayerStateBase
         rb = player.GetComponent<Rigidbody2D>();
         ScreenPieaces();
 
-        //InputManager.Instance.OnLeftClickPressed += JumpON;
-        //InputManager.Instance.OnLeftClickReleased += JumpOff;
     }
     
     public void ScreenPieaces()
@@ -44,110 +36,49 @@ public class PlayerJumpState : PlayerStateBase
     }
 
 
-    //private void JumpON()
-    //{
-    //    shouldJump = true;
-    //}
-    //private void JumpOff()
-    //{
-    //    shouldJump = false;
-    //    StateMachine.ChangeState<PlayerSpeedControllerORDSTATE>();
-
-    //}
-
     void Update()
     {
     }
 
     private void FixedUpdate()
     {
-        //if (shouldJump)
-        //{
-        //    rb.AddForce(transform.right * jumpForce, ForceMode2D.Impulse);
-        //    shouldJump = false;
-        //}
+        
     }
 
     public override void Enter()
     {
-        //shouldJump = true;
+
     }
 
 
     public override void Execute()
     {
         curentMousePos = Input.mousePosition.x;
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    shouldJump = true;
-        //}
-
-
-        if (curentMousePos < SCRleft) { jumpForce = ORDjumpForce - 3; }
-        else if (curentMousePos > SCRright) { jumpForce = ORDjumpForce + 3; }
-        else { jumpForce = ORDjumpForce; }
-        //jumpForce = ORDjumpForce;
     }
 
     public override void Exit()
     {
-        //shouldJump = false;
     }
 
     public override void ProcessFixedUpdate()
     {
-        // lastGroundNormal — нормаль к поверхности, полученная в OnCollisionStay2D
-
-        // 1. Разложим скорость на компоненты
         Vector2 velocity = rb.velocity;
         Vector2 normal = PlayerSpeedControllerORDSTATE.lastGroundNormal.normalized;
+
         Vector2 tangent = new Vector2(-normal.y, normal.x);
 
-        // 2. Сохраним тангенциальную составляющую
         float tangentSpeed = Vector2.Dot(velocity, tangent);
 
-        // 3. Зададим нормальную составляющую для нужной высоты прыжка
         float g = Mathf.Abs(Physics2D.gravity.y * rb.gravityScale);
         float desiredHeight = 3f;
         float v_jump = Mathf.Sqrt(2 * g * desiredHeight);
 
-        // 4. Итоговая скорость — сумма тангенциальной и нормальной
         Vector2 newVelocity = tangent * tangentSpeed + normal * v_jump;
+        Debug.DrawLine(player.transform.position, player.transform.position + (Vector3)newVelocity.normalized * 10, Color.blue, 10);
+
         rb.velocity = newVelocity;
 
         StateMachine.ChangeState<PlayerSpeedControllerORDSTATE>();
 
-
-
-
-        ////float maxJumpSpeed = 10f; // Максимальная скорость при прыжке
-        ////if (rb.velocity.y > maxJumpSpeed)
-        ////{
-        ////    rb.velocity = new Vector2(rb.velocity.x, maxJumpSpeed);
-        ////}
-
-
-        ////if (shouldJump)
-        ////{
-
-        ////if () 
-        ////{ } 
-        ////else if () { } 
-        ////else { }
-
-        ////rb.velocity = rb.velocity.normalized * currentSpeed;
-        ////rb.velocity = new Vector2(0,0);
-
-        ////jumpDirection = new Vector2(rb.velocity.normalized.x, 1f).normalized;
-        ////rb.AddForce(jumpDirection * jumpForce, ForceMode2D.Impulse);
-        ////rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        //rb.AddForce(transform.right * jumpForce, ForceMode2D.Impulse);
-
-
-        ////rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-        ////rb.AddForce(new Vector2(0, ORDjumpForce), ForceMode2D.Impulse);
-        ////rb.AddForce(new Vector2(1, jumpForce), ForceMode2D.Impulse);
-        //StateMachine.ChangeState<PlayerSpeedControllerORDSTATE>();
-        ////}
     }
 }
