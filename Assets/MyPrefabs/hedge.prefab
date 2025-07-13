@@ -555,7 +555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 8507748663663177728}
-  jumpForce: 30
+  ORDjumpForce: 30
 --- !u!114 &2845293499563407205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -569,7 +569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 8507748663663177728}
-  ORDSpeed: 0
+  ORDSpeed: 8
   ground: {fileID: 0}
 --- !u!114 &5872514184891811246
 MonoBehaviour:

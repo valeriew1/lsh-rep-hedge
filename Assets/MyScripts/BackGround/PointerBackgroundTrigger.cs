@@ -5,6 +5,7 @@ using UnityEngine;
 public class PointerBackgroundTrigger : MonoBehaviour
 {
     [SerializeField] private BackGroundCreateScript backgroundCreate;
+    [SerializeField] private Transform NextITSpavnPOint;
 
     private void Awake()
     {
@@ -15,7 +16,7 @@ public class PointerBackgroundTrigger : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            backgroundCreate.CreateBackground(transform.parent);
+            backgroundCreate.CreateBackground(NextITSpavnPOint);
 
         }
     }

@@ -66,6 +66,7 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
                 //прыжок, не трожь
                 if (onEarth)
                 {
+                    LevelManager.Instance.ORDSLideBarDown();
                     StateMachine.ChangeState<PlayerJumpState>();
                     onEarth = false;
                     return;
@@ -84,6 +85,7 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
             else
             {
                 LevelManager.Instance.SLideBar();
+                LevelManager.Instance.ORDSLideBarDown();
 
 
                 if (onEarth)
@@ -100,25 +102,35 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
 
     //public void HUETA() { }
 
+    //private void OnCollisionStay2D(Collision2D other)
+    //{
+    //    if (other.gameObject.CompareTag("ground"))
+    //    {
+    //        lastGroundNormal = other.contacts[0].normal;
+    //        onEarth = true;
+    //    }
+    //}
+
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (ground = other.gameObject)
+        if (other.gameObject.CompareTag("ground") && onEarth ==false)
         {
             lastGroundNormal = other.contacts[0].normal;
-            onEarth = true; 
+            onEarth = true;
         }
+
     }
 
     public static Vector2 lastGroundNormal = Vector2.up;
 
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        if (ground = other.gameObject)
-        { onEarth = false; }
+    //private void OnCollisionExit2D(Collision2D other)
+    //{
+    //    if (other.gameObject.CompareTag("ground"))
+    //    { onEarth = false; }
 
-    } //регулирует второй прыжок - при этом войде прыжок только один
+    //} //регулирует второй прыжок - при этом войде прыжок только один
 
-
+    
 
     public override void Exit() { }
 

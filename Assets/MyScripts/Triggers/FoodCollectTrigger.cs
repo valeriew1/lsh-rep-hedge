@@ -14,47 +14,15 @@ public class FoodCollectTrigger : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.gameObject == player)
+        if (collision.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
 
             LevelManager.Instance.IncreaseScore();
             LevelManager.Instance.IncreaseBar();
         }
-        //GameManager.Instance.IncreaseScore();
-        //GameManager.Instance.IncreaseBar();
-
-        //while (CurrentFoodNum < MaxFoodNum)
-        //{
-        //    GameManager.Instance.IncreaseBar();
-        //}
 
     }
-
-    //[SerializeField] private GameObject foodOBJ;
-    //[SerializeField] private GameObject player;
-
-
-    //Rigidbody2D rbFood;
-    //Rigidbody2D rbPlayer;
-
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    //    rbFood = foodOBJ.GetComponent<Rigidbody2D>();
-    //    rbPlayer = player.GetComponent<Rigidbody2D>();
-    //    textField = textField.GetComponent<TMP_Text>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
 
 
 }

@@ -70,10 +70,15 @@ public class LevelManager : MonoBehaviour
         }
            
     }
+
+    public void ORDSLideBarDown()
+    {
+        CurrentFoodNum -= 0.3f* Time.deltaTime;
+        SLideBar();
+    }
     
     void Start()
     {
-        
     }
 
 }
