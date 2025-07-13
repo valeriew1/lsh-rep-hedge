@@ -5,31 +5,36 @@ using UnityEngine;
 public class PlayerJumpState : PlayerStateBase
 {
     [SerializeField] private GameObject player;
-    [SerializeField] private float jumpForce = 15.0f;
+    [SerializeField] private float ORDjumpForce;
+    private float jumpForce = 20f;
     Rigidbody2D rb;
-    private bool shouldJump = false;
 
+    Vector2 jumpDirection;
 
-    //public void TRY() { }
+    private float SCRwidth;
+    private float SCRleft;
+    private float SCRright;
+    private float curentMousePos;
+
+    
 
 
     protected override void Start()
     {
         base.Start();
         rb = player.GetComponent<Rigidbody2D>();
-        //InputManager.Instance.OnLeftClickPressed += JumpON;
-        //InputManager.Instance.OnLeftClickReleased += JumpOff;
-    }
-    //private void JumpON()
-    //{
-    //    shouldJump = true;
-    //}
-    //private void JumpOff()
-    //{
-    //    shouldJump = false;
-    //    StateMachine.ChangeState<PlayerSpeedControllerORDSTATE>();
+        ScreenPieaces();
 
-    //}
+    }
+    
+    public void ScreenPieaces()
+    {
+        SCRwidth = Screen.width;
+        SCRleft = SCRwidth / 3;
+        SCRright = (SCRwidth / 3) * 2;
+
+    }
+
 
     void Update()
     {
@@ -37,39 +42,43 @@ public class PlayerJumpState : PlayerStateBase
 
     private void FixedUpdate()
     {
-        //if (shouldJump)
-        //{
-        //    rb.AddForce(transform.right * jumpForce, ForceMode2D.Impulse);
-        //    shouldJump = false;
-        //}
+        
     }
 
     public override void Enter()
     {
-        shouldJump = true;
+
     }
 
 
     public override void Execute()
     {
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    shouldJump = true;
-        //}
+        curentMousePos = Input.mousePosition.x;
     }
 
     public override void Exit()
     {
-        shouldJump = false;
     }
 
     public override void ProcessFixedUpdate()
     {
-        if (shouldJump)
-        {
-            rb.AddForce(transform.right * jumpForce, ForceMode2D.Impulse);
-            //rb.AddForce(new Vector2(1, jumpForce), ForceMode2D.Impulse);
-            StateMachine.ChangeState<PlayerSpeedControllerORDSTATE>();
-        }
+        Vector2 velocity = rb.velocity;
+        Vector2 normal = PlayerSpeedControllerORDSTATE.lastGroundNormal.normalized;
+
+        Vector2 tangent = new Vector2(-normal.y, normal.x);
+
+        float tangentSpeed = Vector2.Dot(velocity, tangent);
+
+        float g = Mathf.Abs(Physics2D.gravity.y * rb.gravityScale);
+        float desiredHeight = 3f;
+        float v_jump = Mathf.Sqrt(2 * g * desiredHeight);
+
+        Vector2 newVelocity = tangent * tangentSpeed + normal * v_jump;
+        Debug.DrawLine(player.transform.position, player.transform.position + (Vector3)newVelocity.normalized * 10, Color.blue, 10);
+
+        rb.velocity = newVelocity;
+
+        StateMachine.ChangeState<PlayerSpeedControllerORDSTATE>();
+
     }
 }

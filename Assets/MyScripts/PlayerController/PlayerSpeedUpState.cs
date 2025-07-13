@@ -8,9 +8,7 @@ namespace Assets.MyScripts.PlayerController
     {
         [SerializeField] private GameObject player;
         Rigidbody2D rb;
-        //[SerializeField] private float impForce = 5.0f;
-        //[SerializeField] private int N;
-
+        
         private bool shouldMoreSlide = false;
 
         private double impForce = 0;
@@ -18,12 +16,6 @@ namespace Assets.MyScripts.PlayerController
         [SerializeField] private double X2N;
         [SerializeField] private double t;
         
-        
-        //[SerializeField] private Slider slider;
-        //[SerializeField] private int MaxFoodNum;
-        //private int CurrentFoodNum = 0;
-        
-
         protected override void Start()
         {
             base.Start();
@@ -51,10 +43,7 @@ namespace Assets.MyScripts.PlayerController
             if (X2N >= N)
             {
                 impForce = N / t;
-                //impForce = N / Math.Sqrt(Convert.ToDouble(t));
-                //impForce = N / Math.Pow(Convert.ToDouble(t),2);
             }
-            //else if (X2N < N) { impForce = X2N / Math.Pow(Convert.ToDouble(t), 2); }
             else if (X2N < N) { impForce = 0; }
 
         }
@@ -63,25 +52,11 @@ namespace Assets.MyScripts.PlayerController
 
         public override void Execute()
         {
-            //Debug.Log(rb.velocity.magnitude);
-            //if (slider)
-            //    {
-            //        slider.value = (float)CurrentFoodNum / MaxFoodNum;
-            //    }
-
-
-
-            //GameManager.Instance.SlideBarDown();
-            ////для уменьшения прогресс бара
-            //if (shouldMoreSlide)
-            //{
-            //    GameManager.Instance.SlideBarDown();
-            ////}
             LevelManager.Instance.SlideBarDown();
             raschet();
         }
 
-        public override void Exit() { } //shouldMoreSlide = false;
+        public override void Exit() { }
 
         public override void ProcessFixedUpdate()
         {
@@ -91,15 +66,6 @@ namespace Assets.MyScripts.PlayerController
                 {
                     rb.AddForce(new Vector2((float)impForce,0), ForceMode2D.Force);
                 }
-
-
-                //LevelManager.Instance.SlideBarDown();
-
-                //while()
-
-                //raschet();
-                //rb.AddForce(new Vector2(impForce, 0), ForceMode2D.Force);
-                //rb.AddForce(new Vector2((float)impForce, 0), ForceMode2D.Force);
 
             }
         }

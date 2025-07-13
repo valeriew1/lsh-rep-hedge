@@ -18,33 +18,20 @@ public class LevelManager : MonoBehaviour
     {
         Instance = this;
 
-
     }
-
-
-
-
-    //еда и ускорение:
-
+    
     [SerializeField] private TMP_Text textField;
     private int maxfoodcounter = 0;
 
     [SerializeField] private UnityEngine.UI.Slider sliderbar;
-    //[SerializeField] private int MaxFoodNum;
     [SerializeField] private float MaxFoodNum;
     [SerializeField] private float MinFoodNum;
-    //private int CurrentFoodNum = 0;
     private float CurrentFoodNum = 0f;
-
-
 
     public void IncreaseScore()
     {
         maxfoodcounter++;
         textField.text = Convert.ToString(maxfoodcounter);
-
-        //if (CurrentFoodNum < MaxFoodNum) { CurrentFoodNum++; Debug.Log(CurrentFoodNum); }
-        //CurrentFoodNum++;
 
     }
 
@@ -60,40 +47,22 @@ public class LevelManager : MonoBehaviour
     {
         if (CurrentFoodNum >= MinFoodNum) 
         {
-            //SlideBarDown();
-            //while (CurrentFoodNum > 0) { statemach.ChangeState<PlayerSpeedUpState>(); }
             statemach.ChangeState<PlayerSpeedUpState>();
-            //for (int i = 0; i < MaxFoodNum; i++)
-            //{
-            //var stateMachine = gameObject.GetComponent<StateMachine>();
-            //statemach.ChangeState<PlayerSpeedUpState>();
-            //}
+            
         }
     }
 
     public void SLideBar()
     {
-        //CurrentFoodNum = _CurrentFoodNum;
         if (sliderbar)
         {
             sliderbar.value = (float)CurrentFoodNum / MaxFoodNum;
-
         }
-
-
     }
 
     public void SlideBarDown() 
     {
-        //while (CurrentFoodNum > 0)
-        //{ 
-        //    //CurrentFoodNum = Convert.ToInt32((CurrentFoodNum - 1) * Time.deltaTime); 
-        //    CurrentFoodNum = (CurrentFoodNum - 1f) * Time.deltaTime; 
-
-        //}
-
-        CurrentFoodNum -= Time.deltaTime;
-        //CurrentFoodNum = (CurrentFoodNum - 1f) * Time.deltaTime;
+        CurrentFoodNum -= 5*Time.deltaTime;
         SLideBar();
         if (CurrentFoodNum == 0) 
         { 
@@ -102,22 +71,14 @@ public class LevelManager : MonoBehaviour
            
     }
 
-    //public void SlideTimer() 
-    //{ 
-    //    for (int i = 0; )
-    //}
-
-
-
-    // Start is called before the first frame update
+    public void ORDSLideBarDown()
+    {
+        CurrentFoodNum -= 0.3f* Time.deltaTime;
+        SLideBar();
+    }
+    
     void Start()
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

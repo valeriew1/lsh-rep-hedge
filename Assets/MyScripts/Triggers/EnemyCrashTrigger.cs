@@ -25,45 +25,12 @@ public class EnemyCrashTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject == player) 
+        if (collision.gameObject.CompareTag("Player")) 
         { 
             player.transform.position = worldPosSTART; 
             rbPLayer.velocity = Vector2.zero;
+            GameManager.Instance.RestartLevel();
         }
-        //collision = enemy.GetComponent<Collider2D>();
-        //collision = player.GetComponent<Collider2D>();
-
-        //if (collision.CompareTag("Player"))
-        //{
-        //player.transform.position = worldPosSTART;
-        
-        //}
 
     }
-
-
-    //GameObject player;
-    //public GameObject playerSTARTLOC;
-    //private Vector2 worldPosSTART;
-    //private Rigidbody2D rb;
-    //void Start()
-    //{
-    //    player = GameObject.FindGameObjectWithTag("Player");
-    //    //ballSTARTLOC = GameObject.Find("PlayerStartPoint");
-    //    rb = player.GetComponent<Rigidbody2D>();
-    //    Transform PlayerSTARTLOC_transform = playerSTARTLOC.transform;
-    //    worldPosSTART = PlayerSTARTLOC_transform.position;
-    //}
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if (player != null && other.CompareTag("Player"))
-    //    {
-    //        player.transform.position = worldPosSTART;
-    //        rb.gravityScale = 0f;
-    //        rb.mass = 0f;
-
-    //        //rb.linearVelocity = Vector2.zero;
-
-    //    }
-    //}
 }

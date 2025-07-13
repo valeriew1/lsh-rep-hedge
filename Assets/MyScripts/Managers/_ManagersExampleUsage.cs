@@ -4,7 +4,6 @@ public class _ManagersExampleUsage : MonoBehaviour
 {
     void Start()
     {
-        // Подписка на события
         InputManager.Instance.OnJumpPressed += HandleJump;
         InputManager.Instance.OnPausePressed += HandlePause;
         GameManager.Instance.onStateChanged += OnGameStateChanged;
@@ -12,7 +11,6 @@ public class _ManagersExampleUsage : MonoBehaviour
     
     void HandleJump()
     {
-        // Воспроизводим звук прыжка
         AudioManager.Instance.PlaySound("Jump");
         Debug.Log("Прыжок!");
     }
@@ -47,7 +45,6 @@ public class _ManagersExampleUsage : MonoBehaviour
     
     void OnDestroy()
     {
-        // Отписка от событий
         if (InputManager.Instance != null)
         {
             InputManager.Instance.OnJumpPressed -= HandleJump;
