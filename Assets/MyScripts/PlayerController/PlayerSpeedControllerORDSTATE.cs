@@ -1,4 +1,5 @@
 using Assets.MyScripts.PlayerController;
+using Spine.Unity;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,10 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
     [SerializeField] private GameObject ground;
     Rigidbody2D rbGROUND;
     Rigidbody2D rb;
+
+
+    [SerializeField] private SkeletonAnimation SlideSkeletonAnimation;
+    [SerializeField] private SkeletonAnimation JumpSkeletonAnimation;
 
     [SerializeField] private GameObject leftArrow;
     [SerializeField] private GameObject rightArrow;
@@ -73,6 +78,11 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
 
             if (onEarth && !isSliding)
             {
+                //SlideSkeletonAnimation.GetComponent<GameObject>().SetActive(true);
+                SlideSkeletonAnimation.AnimationState.SetAnimation(0, "Jump", true);
+                //JumpSkeletonAnimation.GetComponent<GameObject>().SetActive(false);
+
+                //SlideSkeletonAnimation.AnimationState.setAc;
                 if (curentMousePos < SCRleft) 
                 { 
                     currentSpeed = ORDSpeed - 3;
@@ -117,6 +127,8 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
                 //ןנûזמך, םו ענמזü
                 if (onEarth)
                 {
+                    //SlideSkeletonAnimation.GetComponent<GameObject>().SetActive(false);
+                    //JumpSkeletonAnimation.AnimationState.SetAnimation(0, "Jump", false);
                     StateMachine.ChangeState<PlayerJumpState>();
                     onEarth = false;
                     return;

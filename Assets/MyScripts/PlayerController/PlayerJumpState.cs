@@ -1,6 +1,7 @@
 using Assets.MyScripts.PlayerController;
 
 using UnityEngine;
+using Spine.Unity;
 
 public class PlayerJumpState : PlayerStateBase
 {
@@ -16,7 +17,9 @@ public class PlayerJumpState : PlayerStateBase
     private float SCRright;
     private float curentMousePos;
 
-    
+    [SerializeField] private SkeletonAnimation SlideSkeletonAnimation;
+    [SerializeField] private SkeletonAnimation JumpskeletonAnimation;
+
 
 
     protected override void Start()
@@ -24,6 +27,8 @@ public class PlayerJumpState : PlayerStateBase
         base.Start();
         rb = player.GetComponent<Rigidbody2D>();
         ScreenPieaces();
+
+
 
     }
     
@@ -47,7 +52,9 @@ public class PlayerJumpState : PlayerStateBase
 
     public override void Enter()
     {
-
+        //JumpskeletonAnimation.GetComponent<GameObject>().SetActive(true);
+        //SlideSkeletonAnimation.GetComponent<GameObject>().SetActive(false);
+        JumpskeletonAnimation.AnimationState.SetAnimation(0, "Jump", false);
     }
 
 
