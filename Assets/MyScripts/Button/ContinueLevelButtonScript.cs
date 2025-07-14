@@ -12,8 +12,6 @@ public class ContinueLevelButtonScript : MonoBehaviour
         ContinueLevelButton.onClick.AddListener(ContinueLevel);
     }
 
-
-
     public void ContinueLevel() 
     {
         Canvas[] allCanvases = Resources.FindObjectsOfTypeAll<Canvas>();

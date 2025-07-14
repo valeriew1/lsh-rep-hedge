@@ -28,6 +28,12 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private float MinFoodNum;
     private float CurrentFoodNum = 0f;
 
+
+    public int GetMaxFoodCounter() 
+    {
+        return maxfoodcounter;
+    }
+
     public void IncreaseScore()
     {
         maxfoodcounter++;
@@ -42,16 +48,6 @@ public class LevelManager : MonoBehaviour
             CurrentFoodNum++; Debug.Log(CurrentFoodNum); 
         }
     }
-
-    
-    //public void CanSLideMore() 
-    //{
-    //    if (CurrentFoodNum >= MinFoodNum) 
-    //    {
-    //        statemach.ChangeState<PlayerSpeedUpState>();
-            
-    //    }
-    //}
 
     public void SLideBar()
     {
@@ -68,10 +64,6 @@ public class LevelManager : MonoBehaviour
             CurrentFoodNum -= 5 * Time.deltaTime;
             SLideBar();
         }
-        //if (CurrentFoodNum == 0) 
-        //{ 
-        //    statemach.ChangeState<PlayerSpeedControllerORDSTATE>(); 
-        //}
            
     }
 
@@ -85,7 +77,6 @@ public class LevelManager : MonoBehaviour
         
     }
 
-    //public void ZeroCheking(bool isnul = true) 
     public bool ZeroCheking() 
     {
         return CurrentFoodNum <= 0;
@@ -96,21 +87,6 @@ public class LevelManager : MonoBehaviour
         return CurrentFoodNum >= MinFoodNum;
         
         
-    }
-
-    //public bool 
-
-    //public void ZeroCheking(bool isnul = false) 
-    //{
-    //    if (CurrentFoodNum == 0)
-    //    {
-    //        statemach.ChangeState<PlayerSpeedControllerORDSTATE>();
-    //        isnul = true;
-    //    }
-    //}
-
-    void Start()
-    {
     }
 
 }

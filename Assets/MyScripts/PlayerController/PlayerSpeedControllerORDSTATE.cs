@@ -40,7 +40,7 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
 
         ScreenPieaces();
 
-        GameManager.Instance.StartGame();
+        //GameManager.Instance.StartGame();
     }
     private void ScreenPieaces() 
     {

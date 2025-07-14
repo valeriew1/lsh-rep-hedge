@@ -1,0 +1,48 @@
+
+HedgehogSprites_Final.png
+size: 1131,350
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Body
+  rotate: false
+  xy: 2, 2
+  size: 692, 346
+  orig: 692, 346
+  offset: 0, 0
+  index: -1
+Ear
+  rotate: false
+  xy: 1028, 244
+  size: 101, 104
+  orig: 102, 108
+  offset: 0, 1
+  index: -1
+Eyes_Open
+  rotate: false
+  xy: 826, 21
+  size: 222, 55
+  orig: 223, 55
+  offset: 0, 0
+  index: -1
+FrontLeftPaw
+  rotate: false
+  xy: 696, 2
+  size: 128, 74
+  orig: 132, 74
+  offset: 0, 0
+  index: -1
+FrontRightPaw
+  rotate: true
+  xy: 1028, 94
+  size: 148, 82
+  orig: 148, 82
+  offset: 0, 0
+  index: -1
+HindPaw_Big
+  rotate: true
+  xy: 696, 78
+  size: 270, 330
+  orig: 270, 330
+  offset: 0, 0
+  index: -1
