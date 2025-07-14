@@ -14,6 +14,10 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
     Rigidbody2D rbGROUND;
     Rigidbody2D rb;
 
+    [SerializeField] private GameObject leftArrow;
+    [SerializeField] private GameObject rightArrow;
+    [SerializeField] private GameObject centerPointer;
+
     private bool onEarth = false;
     private bool isSliding = false;
 
@@ -69,9 +73,27 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
 
             if (onEarth && !isSliding)
             {
-                if (curentMousePos < SCRleft) { currentSpeed = ORDSpeed - 3; }
-                else if (curentMousePos > SCRright) { currentSpeed = ORDSpeed + 3; }
-                else { currentSpeed = ORDSpeed; }
+                if (curentMousePos < SCRleft) 
+                { 
+                    currentSpeed = ORDSpeed - 3;
+                    leftArrow.SetActive(true);
+                    rightArrow.SetActive(false);
+                    centerPointer.SetActive(false);
+                }
+                else if (curentMousePos > SCRright) 
+                {
+                    currentSpeed = ORDSpeed + 3;
+                    rightArrow.SetActive(true);
+                    leftArrow.SetActive(false);
+                    centerPointer.SetActive(false);
+                }
+                else 
+                {
+                    currentSpeed = ORDSpeed;
+                    centerPointer.SetActive(true);
+                    leftArrow.SetActive(false);
+                    rightArrow.SetActive(false);
+                }
             }
 
             if (isSliding)
@@ -88,10 +110,10 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
             //}
 
 
-            Debug.Log(Input.GetMouseButtonDown(0));
+            //Debug.Log(Input.GetMouseButtonDown(0));
             if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log("jump");
+                //Debug.Log("jump");
                 //прыжок, не трожь
                 if (onEarth)
                 {
@@ -104,7 +126,7 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
             //ускорение, не трожь!
             if (Input.GetMouseButtonDown(1))
             {
-                Debug.Log("slide");
+                //Debug.Log("slide");
                 if (LevelManager.Instance.CanSLideMore())
                 {
                     isSliding = true;
