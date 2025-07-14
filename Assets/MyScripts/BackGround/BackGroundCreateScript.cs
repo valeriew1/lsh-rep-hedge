@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Progress;
 using Random = UnityEngine.Random;
 
 public class BackGroundCreateScript : MonoBehaviour
