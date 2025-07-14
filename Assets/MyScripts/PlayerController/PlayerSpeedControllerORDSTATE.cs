@@ -66,7 +66,7 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
 
     public override void Enter()
     {
-        skeletonAnimation.AnimationState.SetAnimation(0, "Speed_Slide", true);
+        //skeletonAnimation.AnimationState.SetAnimation(0, "Speed_Slide", true);
     }
 
     public override void Execute()
@@ -130,6 +130,7 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
                 //ןנûזמך, םו ענמזü
                 if (onEarth)
                 {
+
                     //SlideSkeletonAnimation.GetComponent<GameObject>().SetActive(false);
                     //JumpSkeletonAnimation.AnimationState.SetAnimation(0, "Jump", false);
                     StateMachine.ChangeState<PlayerJumpState>();

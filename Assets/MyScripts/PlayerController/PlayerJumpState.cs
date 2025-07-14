@@ -52,6 +52,7 @@ public class PlayerJumpState : PlayerStateBase
         //JumpskeletonAnimation.GetComponent<GameObject>().SetActive(true);
         //SlideSkeletonAnimation.GetComponent<GameObject>().SetActive(false);
         skeletonAnimation.AnimationState.SetAnimation(0, "Jump", false);
+        skeletonAnimation.AnimationState.AddAnimation(0, "Speed_Slide", true, 0);
     }
 
 
