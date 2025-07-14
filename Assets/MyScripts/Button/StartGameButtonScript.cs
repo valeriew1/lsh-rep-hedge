@@ -17,7 +17,6 @@ public class StartGameButtonScript : MonoBehaviour
     public void onStartGameButtonScript()
     {
         GameManager.Instance.LoadScene("Level");
-        GameManager.Instance.StartGame();
     }
 
 }

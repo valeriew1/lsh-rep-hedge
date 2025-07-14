@@ -17,6 +17,7 @@ public class StateMachine: MonoBehaviour
         }
 
         ChangeState<PlayerSpeedControllerORDSTATE>();
+        GameManager.Instance.StartGame();
     }
 
     // Добавление состояния в машину состояний
