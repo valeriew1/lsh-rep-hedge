@@ -1,5 +1,4 @@
 using Assets.MyScripts.PlayerController;
-using Spine.Unity;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +15,7 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
     Rigidbody2D rb;
 
 
-    [SerializeField] private SkeletonAnimation skeletonAnimation;
+    [SerializeField] private Animator animator;
     
 
     [SerializeField] private GameObject leftArrow;
@@ -78,6 +77,8 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
         {
             LevelManager.Instance.ORDSLideBarDown();
             LevelManager.Instance.SLideBar();
+
+            animator.SetBool("Fast", isSliding);
 
             if (onEarth && !isSliding)
             {
