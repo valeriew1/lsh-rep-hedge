@@ -17,10 +17,7 @@ public class PlayerJumpState : PlayerStateBase
     private float SCRright;
     private float curentMousePos;
 
-    [SerializeField] private SkeletonAnimation SlideSkeletonAnimation;
-    [SerializeField] private SkeletonAnimation JumpskeletonAnimation;
-
-
+    [SerializeField] private SkeletonAnimation skeletonAnimation;
 
     protected override void Start()
     {
@@ -54,7 +51,7 @@ public class PlayerJumpState : PlayerStateBase
     {
         //JumpskeletonAnimation.GetComponent<GameObject>().SetActive(true);
         //SlideSkeletonAnimation.GetComponent<GameObject>().SetActive(false);
-        JumpskeletonAnimation.AnimationState.SetAnimation(0, "Jump", false);
+        skeletonAnimation.AnimationState.SetAnimation(0, "Jump", false);
     }
 
 

@@ -16,8 +16,8 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
     Rigidbody2D rb;
 
 
-    [SerializeField] private SkeletonAnimation SlideSkeletonAnimation;
-    [SerializeField] private SkeletonAnimation JumpSkeletonAnimation;
+    [SerializeField] private SkeletonAnimation skeletonAnimation;
+    
 
     [SerializeField] private GameObject leftArrow;
     [SerializeField] private GameObject rightArrow;
@@ -64,7 +64,10 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
         
     }
 
-    public override void Enter() { }
+    public override void Enter()
+    {
+        skeletonAnimation.AnimationState.SetAnimation(0, "Speed_Slide", true);
+    }
 
     public override void Execute()
     {
@@ -79,7 +82,7 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
             if (onEarth && !isSliding)
             {
                 //SlideSkeletonAnimation.GetComponent<GameObject>().SetActive(true);
-                SlideSkeletonAnimation.AnimationState.SetAnimation(0, "Jump", true);
+                
                 //JumpSkeletonAnimation.GetComponent<GameObject>().SetActive(false);
 
                 //SlideSkeletonAnimation.AnimationState.setAc;
