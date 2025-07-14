@@ -1076,6 +1076,7 @@ MonoBehaviour:
   backgrounds:
   - {fileID: 3326414654542561419, guid: 621e4ef836b503a4ea0bf5f66931b83e, type: 3}
   - {fileID: 2349688640354538667, guid: c925bf50f2f1f9947b69e0f32c86bc97, type: 3}
+  - {fileID: 3326414654542561419, guid: 048c1f3d83d8abc43b44fb89962214ed, type: 3}
 --- !u!1 &577950169
 GameObject:
   m_ObjectHideFlags: 0
@@ -3114,6 +3115,14 @@ PrefabInstance:
     - target: {fileID: 1658701346347549424, guid: e342fbd720a25db488056acdae5f9cf1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2845293499563407205, guid: e342fbd720a25db488056acdae5f9cf1, type: 3}
+      propertyPath: t
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2845293499563407205, guid: e342fbd720a25db488056acdae5f9cf1, type: 3}
+      propertyPath: X2N
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2845293499563407205, guid: e342fbd720a25db488056acdae5f9cf1, type: 3}
       propertyPath: ground

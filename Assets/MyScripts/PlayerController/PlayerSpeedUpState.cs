@@ -20,8 +20,6 @@ namespace Assets.MyScripts.PlayerController
         {
             base.Start();
             rb = player.GetComponent<Rigidbody2D>();
-            InputManager.Instance.OnRightClickPressed += SlideON;
-            InputManager.Instance.OnRightClickReleased += SlideOff;
 
         }
         private void SlideON()
@@ -48,15 +46,35 @@ namespace Assets.MyScripts.PlayerController
 
         }
 
-        public override void Enter(){}
+        public override void Enter(){
+            InputManager.Instance.OnRightClickPressed += SlideON;
+            InputManager.Instance.OnRightClickReleased += SlideOff;
+        }
 
         public override void Execute()
         {
+            //LevelManager.Instance.ZeroCheking(true);
+            //LevelManager.Instance.ZeroCheking();
             LevelManager.Instance.SlideBarDown();
             raschet();
+
+            //if (Input.GetMouseButtonDown(0))
+            //{
+            //    //прыжок, не трожь
+            //    if (onEarth)
+            //    {
+            //        StateMachine.ChangeState<PlayerJumpState>();
+            //        onEarth = false;
+            //        return;
+            //    }
+            //}
         }
 
-        public override void Exit() { }
+        public override void Exit()
+        {
+            InputManager.Instance.OnRightClickPressed -= SlideON;
+            InputManager.Instance.OnRightClickReleased -= SlideOff;
+        }
 
         public override void ProcessFixedUpdate()
         {

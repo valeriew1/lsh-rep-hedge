@@ -43,14 +43,15 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void CanSLideMore() 
-    {
-        if (CurrentFoodNum >= MinFoodNum) 
-        {
-            statemach.ChangeState<PlayerSpeedUpState>();
+    
+    //public void CanSLideMore() 
+    //{
+    //    if (CurrentFoodNum >= MinFoodNum) 
+    //    {
+    //        statemach.ChangeState<PlayerSpeedUpState>();
             
-        }
-    }
+    //    }
+    //}
 
     public void SLideBar()
     {
@@ -62,21 +63,52 @@ public class LevelManager : MonoBehaviour
 
     public void SlideBarDown() 
     {
-        CurrentFoodNum -= 5*Time.deltaTime;
-        SLideBar();
-        if (CurrentFoodNum == 0) 
-        { 
-            statemach.ChangeState<PlayerSpeedControllerORDSTATE>(); 
+        if (CurrentFoodNum > 0)
+        {
+            CurrentFoodNum -= 5 * Time.deltaTime;
+            SLideBar();
         }
+        //if (CurrentFoodNum == 0) 
+        //{ 
+        //    statemach.ChangeState<PlayerSpeedControllerORDSTATE>(); 
+        //}
            
     }
 
     public void ORDSLideBarDown()
     {
-        CurrentFoodNum -= 0.3f* Time.deltaTime;
-        SLideBar();
+        if (CurrentFoodNum > 0) 
+        {
+            CurrentFoodNum -= 0.3f * Time.deltaTime;
+            SLideBar();
+        }
+        
     }
-    
+
+    //public void ZeroCheking(bool isnul = true) 
+    public bool ZeroCheking() 
+    {
+        return CurrentFoodNum <= 0;
+        
+    }
+    public bool CanSLideMore()
+    {
+        return CurrentFoodNum >= MinFoodNum;
+        
+        
+    }
+
+    //public bool 
+
+    //public void ZeroCheking(bool isnul = false) 
+    //{
+    //    if (CurrentFoodNum == 0)
+    //    {
+    //        statemach.ChangeState<PlayerSpeedControllerORDSTATE>();
+    //        isnul = true;
+    //    }
+    //}
+
     void Start()
     {
     }

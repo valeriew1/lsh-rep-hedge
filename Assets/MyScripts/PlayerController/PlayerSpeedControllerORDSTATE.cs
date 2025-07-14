@@ -15,13 +15,17 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
     Rigidbody2D rb;
 
     private bool onEarth = false;
+    private bool isSliding = false;
 
     private float SCRwidth;
     private float SCRleft;
     private float SCRright;
     private float curentMousePos;
 
-
+    private double impForce = 0;
+    private double N;
+    [SerializeField] private double X2N;
+    [SerializeField] private double t;
 
     protected override void Start()
     {
@@ -55,49 +59,81 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
 
     public override void Execute()
     {
-
         curentMousePos = Input.mousePosition.x;
+        //Debug.Log(StateMachine.ChangeState);
 
         if (GameManager.Instance.CurrentState == GameManager.GameState.Playing)
         {
+            LevelManager.Instance.ORDSLideBarDown();
+            LevelManager.Instance.SLideBar();
 
+            if (onEarth && !isSliding)
+            {
+                if (curentMousePos < SCRleft) { currentSpeed = ORDSpeed - 3; }
+                else if (curentMousePos > SCRright) { currentSpeed = ORDSpeed + 3; }
+                else { currentSpeed = ORDSpeed; }
+            }
+
+            if (isSliding)
+            {
+                LevelManager.Instance.SlideBarDown();
+                if (LevelManager.Instance.ZeroCheking()) { isSliding = false; }
+            }
+            //    if (rb.velocity.magnitude < X2N)
+            //    {
+            //        rb.AddForce(new Vector2((float)impForce, 0), ForceMode2D.Force);
+            //    }
+
+            //    raschet();
+            //}
+
+
+            Debug.Log(Input.GetMouseButtonDown(0));
             if (Input.GetMouseButtonDown(0))
             {
+                Debug.Log("jump");
                 //прыжок, не трожь
                 if (onEarth)
                 {
-                    LevelManager.Instance.ORDSLideBarDown();
                     StateMachine.ChangeState<PlayerJumpState>();
                     onEarth = false;
                     return;
-
-
                 }
             }
+            
             //ускорение, не трожь!
-            else if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1))
             {
-
-                LevelManager.Instance.CanSLideMore();
-               
-
-            }
-            else
-            {
-                LevelManager.Instance.SLideBar();
-                LevelManager.Instance.ORDSLideBarDown();
-
-
-                if (onEarth)
+                Debug.Log("slide");
+                if (LevelManager.Instance.CanSLideMore())
                 {
-                    if (curentMousePos < SCRleft) { currentSpeed = ORDSpeed - 3; }
-                    else if (curentMousePos > SCRright) { currentSpeed = ORDSpeed + 3; }
-                    else { currentSpeed = ORDSpeed; }
+                    isSliding = true;
                 }
+                //if ()
+                //LevelManager.Instance.CanSLideMore();
+               
+            } 
 
-
+            if (Input.GetMouseButtonUp(1))
+            {
+                Debug.Log("slide_off");
+                isSliding = false;
             }
+            
+            
         }
+    }
+
+    //расчет ускорения за t секунд
+    private void raschet()
+    {
+        N = rb.velocity.magnitude;
+        if (X2N >= N)
+        {
+            impForce = N / t;
+        }
+        else if (X2N < N) { impForce = 0; }
+
     }
 
     //public void HUETA() { }
@@ -138,7 +174,16 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
     {
         //if (ordslide)
         //{
-        if (onEarth) 
+        if (isSliding)
+        {
+            if (rb.velocity.magnitude < X2N)
+            {
+                rb.AddForce(new Vector2((float)impForce, 0), ForceMode2D.Force);
+            }
+
+            raschet();
+        }
+        else if (onEarth) 
         {
             //rb.velocity = new Vector2(rb.velocity.normalized.x * currentSpeed, rb.velocity.y); 
             rb.velocity = rb.velocity.normalized * currentSpeed;
