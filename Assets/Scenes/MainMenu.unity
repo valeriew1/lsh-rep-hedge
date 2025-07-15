@@ -268,14 +268,14 @@ GameObject:
   - component: {fileID: 302144926}
   - component: {fileID: 302144925}
   - component: {fileID: 302144924}
-  - component: {fileID: 302144927}
+  - component: {fileID: 302144928}
   m_Layer: 5
   m_Name: Education
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &302144923
 RectTransform:
   m_ObjectHideFlags: 0
@@ -293,7 +293,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -574473.1, y: -319078.2}
+  m_AnchoredPosition: {x: 400, y: 169}
   m_SizeDelta: {x: 330, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &302144924
@@ -378,7 +378,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 302144922}
   m_CullTransparentMesh: 1
---- !u!114 &302144927
+--- !u!114 &302144928
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -387,10 +387,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 302144922}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70f6bec1fabd44b428ea5d31282b3891, type: 3}
+  m_Script: {fileID: 11500000, guid: 62bacfb4ad2eb3c4299756d01c9fad84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BackToMenu: {fileID: 0}
+  educationSceneOpener: {fileID: 302144924}
 --- !u!1 &518985590
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,7 +619,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Back to menu
+  m_text: Education
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -646,7 +646,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 59.85
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -654,7 +654,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 2048
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
