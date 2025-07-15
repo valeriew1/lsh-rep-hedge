@@ -225,7 +225,7 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
         else if (onEarth) 
         {
             //rb.velocity = new Vector2(rb.velocity.normalized.x * currentSpeed, rb.velocity.y); 
-            rb.velocity = rb.velocity.normalized * currentSpeed;
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, currentSpeed);
         }
         
 
