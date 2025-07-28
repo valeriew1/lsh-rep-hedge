@@ -35,6 +35,10 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
     [SerializeField] private double X2N;
     [SerializeField] private double t;
 
+    [SerializeField] private AudioClip slideSound;
+    [SerializeField] private AudioSource audSource;
+
+
     protected override void Start()
     {
 
@@ -42,11 +46,14 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
         rb = player.GetComponent<Rigidbody2D>();
         rbGROUND = ground.GetComponent<Rigidbody2D>();
 
-        ScreenPieaces();
+        audSource = audSource.GetComponent<AudioSource>();
+
+
+        ScreenPieces();
 
         //GameManager.Instance.StartGame();
     }
-    private void ScreenPieaces() 
+    private void ScreenPieces() 
     {
         SCRwidth = Screen.width;
         SCRleft = SCRwidth / 3;
@@ -134,7 +141,10 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
 
                     //SlideSkeletonAnimation.GetComponent<GameObject>().SetActive(false);
                     //JumpSkeletonAnimation.AnimationState.SetAnimation(0, "Jump", false);
+
                     StateMachine.ChangeState<PlayerJumpState>();
+                    //audSource.PlayOneShot(jumpSound);
+
                     onEarth = false;
                     return;
                 }
@@ -175,17 +185,6 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
 
     }
 
-    //public void HUETA() { }
-
-    //private void OnCollisionStay2D(Collision2D other)
-    //{
-    //    if (other.gameObject.CompareTag("ground"))
-    //    {
-    //        lastGroundNormal = other.contacts[0].normal;
-    //        onEarth = true;
-    //    }
-    //}
-
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("ground") && onEarth ==false)
@@ -218,6 +217,7 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
             if (rb.velocity.magnitude < X2N)
             {
                 rb.AddForce(new Vector2((float)impForce, 0), ForceMode2D.Force);
+                audSource.PlayOneShot(slideSound);
             }
 
             raschet();

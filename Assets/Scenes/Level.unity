@@ -4527,6 +4527,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 303539538}
     - target: {fileID: 2845293499563407205, guid: e342fbd720a25db488056acdae5f9cf1, type: 3}
+      propertyPath: audSource
+      value: 
+      objectReference: {fileID: 6737695630959859559}
+    - target: {fileID: 2845293499563407205, guid: e342fbd720a25db488056acdae5f9cf1, type: 3}
+      propertyPath: jumpSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 205be67afd3eb43a18e9e78c60a271f1, type: 3}
+    - target: {fileID: 2845293499563407205, guid: e342fbd720a25db488056acdae5f9cf1, type: 3}
       propertyPath: leftArrow
       value: 
       objectReference: {fileID: 321656439}
@@ -4535,9 +4543,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1445508157}
     - target: {fileID: 2845293499563407205, guid: e342fbd720a25db488056acdae5f9cf1, type: 3}
+      propertyPath: slideSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0d5300abead1941e28b47ac44f40eefd, type: 3}
+    - target: {fileID: 2845293499563407205, guid: e342fbd720a25db488056acdae5f9cf1, type: 3}
       propertyPath: centerPointer
       value: 
       objectReference: {fileID: 1579977622}
+    - target: {fileID: 3056988559066341876, guid: e342fbd720a25db488056acdae5f9cf1, type: 3}
+      propertyPath: m_Pitch
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3056988559066341876, guid: e342fbd720a25db488056acdae5f9cf1, type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3056988559066341876, guid: e342fbd720a25db488056acdae5f9cf1, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3671880989427955210, guid: e342fbd720a25db488056acdae5f9cf1, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.8394
@@ -4602,6 +4626,14 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 303539538}
+    - target: {fileID: 7893664748363837014, guid: e342fbd720a25db488056acdae5f9cf1, type: 3}
+      propertyPath: audSource
+      value: 
+      objectReference: {fileID: 6737695630959859559}
+    - target: {fileID: 7893664748363837014, guid: e342fbd720a25db488056acdae5f9cf1, type: 3}
+      propertyPath: jumpSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 8800e692db52c4ad9bac9f80ff5a5f3e, type: 3}
     - target: {fileID: 8507748663663177728, guid: e342fbd720a25db488056acdae5f9cf1, type: 3}
       propertyPath: m_Name
       value: hedge
@@ -4618,6 +4650,11 @@ PrefabInstance:
 --- !u!4 &6737695630959859558 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3671880989427955210, guid: e342fbd720a25db488056acdae5f9cf1, type: 3}
+  m_PrefabInstance: {fileID: 6737695630959859557}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &6737695630959859559 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3056988559066341876, guid: e342fbd720a25db488056acdae5f9cf1, type: 3}
   m_PrefabInstance: {fileID: 6737695630959859557}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807

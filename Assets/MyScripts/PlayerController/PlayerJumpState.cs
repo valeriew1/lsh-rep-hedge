@@ -16,6 +16,10 @@ public class PlayerJumpState : PlayerStateBase
     private float SCRright;
     private float curentMousePos;
 
+    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private AudioSource audSource;
+
+
     [SerializeField] private Animator animator;
 
     protected override void Start()
@@ -24,7 +28,7 @@ public class PlayerJumpState : PlayerStateBase
         rb = player.GetComponent<Rigidbody2D>();
         ScreenPieaces();
 
-
+        audSource = audSource.GetComponent<AudioSource>();
 
     }
     
@@ -51,6 +55,8 @@ public class PlayerJumpState : PlayerStateBase
         //JumpskeletonAnimation.GetComponent<GameObject>().SetActive(true);
         //SlideSkeletonAnimation.GetComponent<GameObject>().SetActive(false);
         animator.SetTrigger("Jump");
+
+        audSource.PlayOneShot(jumpSound);
     }
 
 

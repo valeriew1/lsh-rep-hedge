@@ -6,6 +6,7 @@ namespace Assets.MyScripts.PlayerController
 {
     internal class PlayerSpeedUpState: PlayerStateBase
     {
+        //нынче не используется. Все через ord speed state
         [SerializeField] private GameObject player;
         Rigidbody2D rb;
         
