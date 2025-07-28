@@ -157,6 +157,7 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
                 if (LevelManager.Instance.CanSLideMore())
                 {
                     isSliding = true;
+                    audSource.PlayOneShot(slideSound);
                 }
                 //if ()
                 //LevelManager.Instance.CanSLideMore();
@@ -217,7 +218,7 @@ public class PlayerSpeedControllerORDSTATE : PlayerStateBase
             if (rb.velocity.magnitude < X2N)
             {
                 rb.AddForce(new Vector2((float)impForce, 0), ForceMode2D.Force);
-                audSource.PlayOneShot(slideSound);
+                //audSource.PlayOneShot(slideSound);
             }
 
             raschet();
